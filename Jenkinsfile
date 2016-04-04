@@ -1,6 +1,6 @@
 folder('1')
 
-deliveryPipelineView('1/1') {
+deliveryPipelineView('1/Build') {
 
     pipelineInstances(5)
     enableManualTriggers()
