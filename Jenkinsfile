@@ -1,4 +1,4 @@
-/*folder('1')
+folder('1')
 
 deliveryPipelineView('1/Build') {
 
@@ -46,14 +46,54 @@ job('Build/test1b'){
     }
     publishers {
             downstreamParameterized {
-                trigger('Build/test1b') {
+                trigger('Build/1c') {
                     gitRevision(false)
                 }
-                trigger('Build/test1b', 'SUCCESS', true) {
+                trigger('Build/1d', 'SUCCESS', true) {
                 }
             }
     }
-} **/
+} 
+job('Build/1c) {
+    deliveryPipelineConfiguration("Build", "1c")
+    scm {
+        git {
+            remote {
+                url('https://github.com/rbelk/PDpluginTest.git')
+            }
+        }
+    }
+
+    wrappers {
+        buildName('\$PIPELINE_VERSION')
+    }
+
+    steps {
+        shell(
+                'sleep 10'
+        )
+    }
+}
+job('Build/1d') {
+    deliveryPipelineConfiguration("Build", "1d")
+    scm {
+        git {
+            remote {
+                url('https://github.com/rbelk/PDpluginTest.git')
+            }
+        }
+    }
+
+    wrappers {
+        buildName('\$PIPELINE_VERSION')
+    }
+
+    steps {
+        shell(
+                'sleep 10'
+        )
+    }
+}
 /*
 This file is part of Delivery Pipeline Plugin.
 
