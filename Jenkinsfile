@@ -11,8 +11,8 @@ deliveryPipelineView('1/Build') {
 
 }
 
-job('Build/test1a') {
-    deliveryPipelineConfiguration("Build", "test1a") 
+job('Build/titicaca') {
+    deliveryPipelineConfiguration("Bbana", "test1a") 
     scm {
         git {
             remote {
