@@ -11,8 +11,8 @@ deliveryPipelineView('1/1') {
 
 }
 
-job('Build/test1a') {
-    deliveryPipelineConfiguration("Build", "test1a") 
+job('test/test1a') {
+    deliveryPipelineConfiguration("test", "test1a") 
     scm {
         git {
             remote {
@@ -32,8 +32,8 @@ job('Build/test1a') {
     }
 }
 
-job('Build/test1b'){
-    deliveryPipelineConfiguration("Build", "test1b")
+job('test/test1b'){
+    deliveryPipelineConfiguration("test", "test1b")
     scm {
         git {
             remote {
