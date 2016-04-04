@@ -1,99 +1,10 @@
-folder('1')
+node {
+	
+	println "pretend to build...";
 
-deliveryPipelineView('1/Build') {
-
-    pipelineInstances(5)
-    enableManualTriggers()
-    showChangeLog()
-    pipelines {
-        component('Component', '1/Build')
-    }
-
+	step([$class: 'FireEventStep', eventName: 'build', properties: """version=1.0"""]);
 }
 
-job('Build/titicaca') {
-    deliveryPipelineConfiguration("Bbana", "test1a") 
-    scm {
-        git {
-            remote {
-                url('https://github.com/rbelk/PDpluginTest.git')
-            }
-        }
-    }
-    wrappers {
-        deliveryPipelineVersion('1.0.0.\$BUILD_NUMBER', true)
-    }
-    publishers {
-            downstreamParameterized {
-                trigger('Build/test1b') {
-                    gitRevision(true)
-                }
-            }
-    }
-}
-
-job('Build/test1b'){
-    deliveryPipelineConfiguration("Build", "test1b")
-    scm {
-        git {
-            remote {
-                url('https://github.com/rbelk/DPpluginTest2.git')
-            }
-        }
-    }
-    wrappers {
-        buildName("\$PIPELINE_VERSION")
-    }
-    publishers {
-            downstreamParameterized {
-                trigger('Build/1c') {
-                    gitRevision(false)
-                }
-                trigger('Build/1d', 'SUCCESS', true) {
-                }
-            }
-    }
-} 
-job('Build/1c) {
-    deliveryPipelineConfiguration("Build", "1c")
-    scm {
-        git {
-            remote {
-                url('https://github.com/rbelk/PDpluginTest.git')
-            }
-        }
-    }
-
-    wrappers {
-        buildName('\$PIPELINE_VERSION')
-    }
-
-    steps {
-        shell(
-                'sleep 10'
-        )
-    }
-}
-job('Build/1d') {
-    deliveryPipelineConfiguration("Build", "1d")
-    scm {
-        git {
-            remote {
-                url('https://github.com/rbelk/PDpluginTest.git')
-            }
-        }
-    }
-
-    wrappers {
-        buildName('\$PIPELINE_VERSION')
-    }
-
-    steps {
-        shell(
-                'sleep 10'
-        )
-    }
-}
 /*
 This file is part of Delivery Pipeline Plugin.
 
