@@ -6,7 +6,7 @@ deliveryPipelineView('1/1') {
     enableManualTriggers()
     showChangeLog()
     pipelines {
-        component('Component', '1/test1a')
+        component('Component', '1/Build')
     }
 
 }
@@ -41,12 +41,12 @@ job('1/test1b'){
         }
     }
     wrappers {
-        deliveryPipelineVersion('1.0.0.\$BUILD_NUMBER,' true)
+        buildName("\$PIPELINE_VERSION")
     }
-    publishers {
-        downstreamParameterized {
-            trigger('Build/test1b', 'SUCCESS', true)
-        }
+    steps {
+        shell(
+                'sleep 10'
+        )
     }
 }
 /*
