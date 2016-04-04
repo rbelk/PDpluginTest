@@ -1,6 +1,6 @@
 publishers {
     downstreamParameterized {
-        trigger('Demo/dstream.groovy', 'SUCCESS', true) {
+        trigger('Demods', 'SUCCESS', true) {
 
         }
     }
