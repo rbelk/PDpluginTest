@@ -11,7 +11,7 @@ deliveryPipelineView('1/1') {
 
 }
 
-job('1/Build') {
+job('Build/test1a') {
     deliveryPipelineConfiguration("Build", "test1a") 
     scm {
         git {
@@ -25,13 +25,14 @@ job('1/Build') {
     }
     publishers {
             downstreamParameterized {
-                trigger('Build/test1b', 'SUCCESS', true) {
+                trigger('Build/test1b') {
+                    gitRevision(false)
                 }
             }
     }
 }
 
-job('1/Build'){
+job('Build/test1b'){
     deliveryPipelineConfiguration("Build", "test1b")
     scm {
         git {
