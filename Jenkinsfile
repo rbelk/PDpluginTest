@@ -1,7 +1,7 @@
-node {
-	println "pretend to build...";
-	step([$class: 'FireEventStep', eventName: 'build', properties: """version=1.0"""]);
-}
+publishers {
+        buildPipelineTrigger('Demo/DeployQA') {
+        }
+    }
 
 /*
 This file is part of Delivery Pipeline Plugin.
