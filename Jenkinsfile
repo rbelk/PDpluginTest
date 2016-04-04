@@ -1,8 +1,35 @@
-publishers {
-        buildPipelineTrigger('1/test1b') {
-        }
+folder('1')
+
+deliveryPipelineView('1/1') {
+
+    pipelineInstances(5)
+    enableManualTriggers()
+    showChangeLog()
+    pipelines {
+        component('Component', '1/test1a')
     }
 
+}
+
+job('1/test1a') {
+    deliveryPipelineConfiguration("Build", "test1a") 
+    scm {
+        git {
+            remote {
+                url('https://github.com/rbelk/PDpluginTest.git')
+            }
+        }
+    }
+    wrappers {
+        deliveryPipelineVersion('1.0.0.\$BUILD_NUMBER', true)
+    }
+    publishers {
+            downstreamParameterized {
+                trigger('Build/test1b', 'SUCCESS', true) {
+                }
+            }
+    }
+}
 /*
 This file is part of Delivery Pipeline Plugin.
 
