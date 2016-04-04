@@ -1,5 +1,5 @@
 publishers {
-        buildPipelineTrigger('test1b') {
+        buildPipelineTrigger('1/test1b') {
         }
     }
 
