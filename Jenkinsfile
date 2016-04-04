@@ -26,7 +26,7 @@ job('Build/test1a') {
     publishers {
             downstreamParameterized {
                 trigger('Build/test1b') {
-                    gitRevision(false)
+                    gitRevision(true)
                 }
             }
     }
