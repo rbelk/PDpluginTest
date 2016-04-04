@@ -11,8 +11,8 @@ deliveryPipelineView('1/1') {
 
 }
 
-job('test/test1a') {
-    deliveryPipelineConfiguration("test", "test1a") 
+job('Build/test1a') {
+    deliveryPipelineConfiguration("Build", "test1a") 
     scm {
         git {
             remote {
@@ -32,8 +32,8 @@ job('test/test1a') {
     }
 }
 
-job('test/test1b'){
-    deliveryPipelineConfiguration("test", "test1b")
+job('Build/test1b'){
+    deliveryPipelineConfiguration("Build", "test1b")
     scm {
         git {
             remote {
@@ -44,10 +44,14 @@ job('test/test1b'){
     wrappers {
         buildName("\$PIPELINE_VERSION")
     }
-    steps {
-        shell(
-                'sleep 10'
-        )
+    publishers {
+            downstreamParameterized {
+                trigger('Build/test1b') {
+                    gitRevision(false)
+                }
+                trigger('Build/test1b', 'SUCCESS', true) {
+                }
+            }
     }
 }
 /*
