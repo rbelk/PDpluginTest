@@ -30,6 +30,25 @@ job('1/test1a') {
             }
     }
 }
+
+job('1/test1b'){
+    deliveryPipelineConfiguration("Build", "test1b")
+    scm {
+        git {
+            remote {
+                url('https://github.com/rbelk/DPpluginTest2.git')
+            }
+        }
+    }
+    wrappers {
+        deliveryPipelineVersion('1.0.0.\$BUILD_NUMBER,' true)
+    }
+    publishers {
+        downstreamParameterized {
+            trigger('Build/test1b', 'SUCCESS', true)
+        }
+    }
+}
 /*
 This file is part of Delivery Pipeline Plugin.
 
