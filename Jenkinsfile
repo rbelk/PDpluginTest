@@ -1,5 +1,5 @@
 publishers {
-        buildPipelineTrigger('https://github.com/rbelk/DPpluginTest2.git') {
+        buildPipelineTrigger('test1b') {
         }
     }
 
