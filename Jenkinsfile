@@ -1,4 +1,4 @@
-folder('1')
+/*folder('1')
 
 deliveryPipelineView('1/Build') {
 
@@ -53,7 +53,7 @@ job('Build/test1b'){
                 }
             }
     }
-}
+} **/
 /*
 This file is part of Delivery Pipeline Plugin.
 
