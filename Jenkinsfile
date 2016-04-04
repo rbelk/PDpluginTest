@@ -11,7 +11,7 @@ deliveryPipelineView('1/1') {
 
 }
 
-job('1/test1a') {
+job('1/Build') {
     deliveryPipelineConfiguration("Build", "test1a") 
     scm {
         git {
@@ -31,7 +31,7 @@ job('1/test1a') {
     }
 }
 
-job('1/test1b'){
+job('1/Build'){
     deliveryPipelineConfiguration("Build", "test1b")
     scm {
         git {
