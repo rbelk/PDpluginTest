@@ -1,9 +1,5 @@
-node {
-	
-	println "pretend to build...";
-
-	step([$class: 'FireEventStep', eventName: 'build', properties: """version=1.0"""]);
-}
+node {	step([$class: 'FireEventStep', eventName: 'build', properties: """stage=stage1
+task=task1""");}
 
 /*
 This file is part of Delivery Pipeline Plugin.
