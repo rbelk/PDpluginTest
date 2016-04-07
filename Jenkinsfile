@@ -2,8 +2,7 @@ node {
 	
 	println "pretend to build...";
 
-	step([$class: 'FireEventStep', eventName: 'build', properties: """stage=stage1
-	task=task1 """]);
+	step([$class: 'FireEventStep', eventName: 'build', properties: """stage=stage1"""]);
 }
 
 /*
