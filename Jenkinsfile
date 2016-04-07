@@ -1,5 +1,4 @@
-node {	step([$class: 'FireEventStep', eventName: 'build', properties: """stage=stage1
-task=task1""");}
+node {	step([$class: 'FireEventStep', eventName: 'build', properties: """stage=stage1""");}
 
 /*
 This file is part of Delivery Pipeline Plugin.
